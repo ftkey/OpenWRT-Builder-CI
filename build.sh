@@ -7,6 +7,10 @@ make info
 PROFILE="jdcloud_re-cs-07"
 
 PACKAGES=""
+PACKAGES_DEL=""
+
+PACKAGES_DEL="$PACKAGES_DEL -kmod-qca-nss-drv-vlan"
+
 
 # # Argon 主题
 # PACKAGES="$PACKAGES luci-theme-argon luci-i18n-argon-config-zh-cn"
@@ -25,4 +29,4 @@ FILES="files"
 # 禁用 openssh-server 的 sshd 服务和 docker 的 dockerd 服务以防止冲突
 DISABLED_SERVICES="sshd"
 
-make image PROFILE="$PROFILE" PACKAGES="$PACKAGES" FILES="$FILES" DISABLED_SERVICES="$DISABLED_SERVICES"
+make image PROFILE="$PROFILE" PACKAGES="$PACKAGES PACKAGES_DEL" FILES="$FILES" DISABLED_SERVICES="$DISABLED_SERVICES"
