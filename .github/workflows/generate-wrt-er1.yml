@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Generate ER1 OpenWrt Firmware (LEDE)
+name: Generate ER1 OpenWrt Firmware (OWRT)
 
 # Controls when the workflow will run
 on:
@@ -18,8 +18,8 @@ on:
 
 env:
 
-  VENDOR: openwrt
-  VERSION: 23.05
+  VENDOR: owrt
+  VERSION: 24.10
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -48,10 +48,10 @@ jobs:
 
       - name: Download Image Builder
         run: |
-          wget https://github.com/ftkey/OpenWRT-SDK-CI/releases/download/R24.12.06_21.05.44_ipq60xx_lede/openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64.tar.xz
-          tar -xvf openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64.tar.xz
-          rm -rf openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64.tar.xz
-          mv openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64 wrt
+          wget https://github.com/ftkey/OpenWRT-SDK-CI/releases/download/R24.12.06_22.26.47_ipq60xx_owrt_all/immortalwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64.tar.zst
+          tar -xvf immortalwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64.tar.zst
+          rm -rf immortalwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64.tar.zst
+          mv immortalwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64 wrt
           cp -r $GITHUB_WORKSPACE/origin/* $GITHUB_WORKSPACE/wrt/
       
       - name: Download External Packages
@@ -62,7 +62,7 @@ jobs:
       - name: Run Patch and DIY Scripts
         working-directory: wrt
         run: |
-          cp -f scripts/lede.repositories.conf repositories.conf
+          cp -f scripts/owrt.repositories repositories
           bash scripts/lede.builder-patch.sh
 
       - name: Generate Firmware
@@ -80,6 +80,6 @@ jobs:
       - name: Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: R${{ env.DATE }}_ipq60xx_lede
+          tag_name: R${{ env.DATE }}_ipq60xx_owrt
           files: wrt/bin/targets/qualcommax/ipq60xx/*.*
   

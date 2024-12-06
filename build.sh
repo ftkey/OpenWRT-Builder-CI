@@ -13,7 +13,7 @@ PACKAGES_DEL="$PACKAGES_DEL -kmod-qca-nss-drv-vlan"
 
 
 # # Argon 主题
-#PACKAGES="$PACKAGES luci-theme-argon"
+PACKAGES="$PACKAGES luci-theme-argon"
 
 # # Samba 网络共享
 # PACKAGES="$PACKAGES luci-i18n-samba4-zh-cn"
