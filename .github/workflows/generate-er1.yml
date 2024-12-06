@@ -70,25 +70,21 @@ jobs:
 
       - name: Upload VDI Image For Development Purpose
         if: github.ref == 'refs/heads/dev'
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.VENDOR }}-${{ env.VERSION }}-x86_64-vdi-image-${{ env.DATETIME }}
+          name: ${{ env.VENDOR }}-${{ env.VERSION }}-ipq60xx-vdi-image-${{ env.DATETIME }}
           path: openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64/bin/targets/x86/64/*.vdi
 
       - name: Upload All Firmware to Artifacts
         if: github.event.inputs.upload-all == 'true'
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.VENDOR }}-${{ env.VERSION }}-x86_64-images-${{ env.DATETIME }}
+          name: ${{ env.VENDOR }}-${{ env.VERSION }}-ipq60xx-images-${{ env.DATETIME }}
           path: openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64/bin/targets/x86/64/*
 
-      - name: Upload Firmware to Release
-        if: github.event.inputs.release == 'true'
-        uses: svenstaro/upload-release-action@master
+      - name: Release Firmware
+        uses: softprops/action-gh-release@master
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file_glob: true
-          file: openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64/bin/targets/x86/64/*
-          asset_name: ${{ github.event.repository.name }}-${{ github.sha }}
-          tag: release-${{ env.DATE }}
-          overwrite: true
+          tag_name: R${{ env.DATE }}_ipq60xx_lede
+          files: openwrt-imagebuilder-qualcommax-ipq60xx.Linux-x86_64/bin/targets/x86/64/*.*
+  
