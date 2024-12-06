@@ -4,7 +4,7 @@
 make info
 
 # 主配置名称
-PROFILE="generic"
+PROFILE="jdcloud_re-cs-07"
 
 PACKAGES=""
 
