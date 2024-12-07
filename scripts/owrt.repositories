@@ -1,4 +1,4 @@
-# https://downloads.immortalwrt.org/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb
+https://downloads.immortalwrt.org/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb
 https://downloads.immortalwrt.org/snapshots/packages/aarch64_cortex-a53/base/packages.adb
 https://downloads.immortalwrt.org/snapshots/packages/aarch64_cortex-a53/luci/packages.adb
 # #https://downloads.immortalwrt.org/snapshots/packages/aarch64_cortex-a53/nss_packages/packages.adb
@@ -7,8 +7,8 @@ https://downloads.immortalwrt.org/snapshots/packages/aarch64_cortex-a53/packages
 # #https://downloads.immortalwrt.org/snapshots/packages/aarch64_cortex-a53/sqm_scripts_nss/packages.adb
 # https://downloads.immortalwrt.org/snapshots/packages/aarch64_cortex-a53/telephony/packages.adb
 
-src imagebuilder file:packages
+# src imagebuilder file:packages
 
-option check_signature
+# option check_signature
 
 #!!! TMD  内核不一致要删预编译文件?!
