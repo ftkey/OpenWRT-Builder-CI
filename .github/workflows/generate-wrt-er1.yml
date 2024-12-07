@@ -62,7 +62,7 @@ jobs:
       - name: Run Patch and DIY Scripts
         working-directory: wrt
         run: |
-          cp -f scripts/owrt.repositories repositories
+          # cp -f scripts/owrt.repositories repositories
           bash scripts/lede.builder-patch.sh
 
       - name: Generate Firmware
